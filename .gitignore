@@ -1,0 +1,54 @@
+# Created by .ignore support plugin (hsz.mobi)
+####################
+# Intellij Config #
+###################
+*.iml
+*.ipr
+*.iws
+*.ids
+.idea
+.idea/**/*
+###########################
+# Project Intellij Config #
+###########################
+module_*.xml
+#server.properties
+#server.xml
+application.properties
+
+################
+# maven config #
+################
+target
+logs
+data/
+
+.DS_Store
+###################
+# Netbeans config #
+###################
+lib
+nbactions.xml
+nb-configuration.xml
+catalog.xml
+
+*.log
+
+####################
+# Compression file #
+####################
+*.zip
+*.rar
+
+####################
+# Mockup file #
+####################
+INita-Mockup
+
+
+####################
+# Jasper Report    #
+####################
+*.jasper
+
+./cdf-repository/src/main/resources/application.properties
