@@ -113,6 +113,7 @@ public class SesiDaoTest {
         try(Connection c = dataSource.getConnection()) {
 //            cek table sesi
             ResultSet resultSet = c.createStatement().executeQuery(sql);
+            System.out.println("hasil cek ="+resultSet.getLong(1));
             Assert.assertTrue(resultSet.next());
             Assert.assertEquals(1L,resultSet.getLong(1));
 

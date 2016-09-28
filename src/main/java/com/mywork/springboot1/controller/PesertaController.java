@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by israj on 9/27/2016.
  */
@@ -25,13 +27,13 @@ public class PesertaController {
 
     @RequestMapping(value = "/peserta",method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void insertPeserta(@RequestBody Peserta peserta){
+    public void insertPeserta(@RequestBody @Valid Peserta peserta){
         pd.save(peserta);
     }
 
     @RequestMapping(value = "/peserta/{id}",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void updatePeserta(@PathVariable("id") String id,@RequestBody Peserta peserta){
+    public void updatePeserta(@PathVariable("id") String id,@RequestBody @Valid Peserta peserta){
         peserta.setId(id);
         pd.save(peserta);
     }

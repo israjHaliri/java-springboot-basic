@@ -10,13 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
-public class Springboot1Application extends SpringBootServletInitializer{
+//public class Springboot1Application extends SpringBootServletInitializer{
+public class Springboot1Application{
 
 	public static void main(String[] args) {
 		SpringApplication.run(Springboot1Application.class, args);
 	}
 
-	public SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Springboot1Application.class);
-	}
+//	public SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(Springboot1Application.class);
+//	}
 }
