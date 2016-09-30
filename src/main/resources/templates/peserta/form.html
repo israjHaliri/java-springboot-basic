@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<div th:fragment="content">
 <form action="#" th:action="@{/peserta/form}" th:object="${peserta}" method="post">
     <table>
         <tr>
@@ -27,5 +28,6 @@
         </tr>
     </table>
 </form>
+</div>
 </body>
 </html>
