@@ -8,5 +8,9 @@
 <p th:text="'Hello, ' + ${nama} + '!'" />
 <p th:text="'Hello, ' + ${waktu} + '!'" />
 <p th:text="${waktu}" />
+
+<form name="f" th:action="@{/logout}" method="post">
+    <input type="submit" value="logout" />
+    </form>
 </body>
 </html>
