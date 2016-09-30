@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style></style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>Nama</td>
+        <td>Email</td>
+        <td>Tanggal Lahir</td>
+        <td>&nbsp;</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="value : ${daftarPeserta}">
+        <td th:text="${value.name}">israj</td>
+        <td th:text="${value.email}">israj@gmail</td>
+        <td th:text="${value.tanggalLahir}">1111/11/11</td>
+        <td>
+            <a href="edit.html" th:href="@{/peserta/form(id=${value.id})}"> edit </a>
+            <a href="view.html" th:href="@{/peserta/view(id=${value.id})}"> | lihat </a>
+            <a href="view.html" th:href="@{/peserta/delete(id=${value.id})}"> | hapus </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
