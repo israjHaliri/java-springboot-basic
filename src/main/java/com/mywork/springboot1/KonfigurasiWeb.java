@@ -3,6 +3,8 @@ package com.mywork.springboot1;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView;
@@ -20,6 +22,12 @@ public class KonfigurasiWeb extends WebMvcConfigurerAdapter{
         viewControllerRegistry.addViewController("/login").setViewName("login");
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(    "/resources/**")
+                .addResourceLocations(  "/static/");
+    }
+
 
     @Bean
     public JasperReportsViewResolver getJasperReportsViewResolver() {
@@ -32,5 +40,10 @@ public class KonfigurasiWeb extends WebMvcConfigurerAdapter{
         resolver.setOrder(0);
 
         return resolver;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new ThymeleafLayoutInterceptor());
     }
 }
