@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:fragment="content">
-<form action="#" th:action="@{/peserta/form}" th:object="${peserta}" method="post">
+<form action="#" th:action="@{/peserta/form}" th:object="${peserta}" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>Name:</td>
@@ -22,6 +22,11 @@
             <td>Tanggal lahir:</td>
             <td><input type="text" th:field="*{tanggalLahir}" /></td>
             <td th:if="${#fields.hasErrors('tanggalLahir')}" th:errors="*{tanggalLahir}">Tanggal Lahir Error</td>
+        </tr>
+        <tr>
+            <td>Foto:</td>
+            <td><input type="file" name="foto" /></td>
+            <td>Foto Error</td>
         </tr>
         <tr>
             <td><button type="submit">Submit</button></td>
