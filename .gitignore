@@ -51,4 +51,4 @@ INita-Mockup
 ####################
 *.jasper
 
-./cdf-repository/src/main/resources/application.properties
+./cdf-repository/src/main/report/application.properties
