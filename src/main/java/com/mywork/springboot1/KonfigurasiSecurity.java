@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -32,13 +33,16 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/halo").hasAnyRole("ADMIN","STAFF")
-                .antMatchers("/peserta/form").hasAnyRole("ADMIN")
-                .antMatchers("/peserta/list").hasAnyRole("STAFF")
+        http
+                .authorizeRequests()
+                .antMatchers("/backend/**").hasAnyRole("ADMIN","STAFF")
+                .antMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
+                .and().authorizeRequests()
+                .antMatchers("/**").permitAll().anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/halo").and().logout();
+                .defaultSuccessUrl("/halo").and().logout().and()
+                .exceptionHandling().authenticationEntryPoint(new Http403ForbiddenEntryPoint());
     }
 
 }

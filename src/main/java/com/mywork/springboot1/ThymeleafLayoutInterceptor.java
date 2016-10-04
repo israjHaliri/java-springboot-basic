@@ -14,18 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
 
 
-    private static final String DEFAULT_LAYOUT = "layout";
+    private static final String DEFAULT_LAYOUT_FRONTEND = "layout";
+    private static final String DEFAULT_LAYOUT_BACKEND = "layout-backend";
     private static final String DEFAULT_VIEW_ATTRIBUTE_NAME = "view";
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getAuthorities().toString();
-
-        System.out.println("============== jenis login ==================");
-        System.out.println(name);
-        System.out.println("============== jenis login ==================");
 
         if (modelAndView == null || !modelAndView.hasView()) {
             return;
@@ -35,7 +29,17 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
         if (originalViewName.startsWith("redirect:")){
             return;
         }
-        modelAndView.setViewName(DEFAULT_LAYOUT);
+
+        if (request.getRequestURI().startsWith("/backend")){
+            System.out.println("jalan di backedn");
+            System.out.println(request.getRequestURI());
+            modelAndView.setViewName(DEFAULT_LAYOUT_BACKEND);
+        }
+        else{
+            System.out.println("jalan disnin");
+            System.out.println(request.getRequestURI());
+            modelAndView.setViewName(DEFAULT_LAYOUT_FRONTEND);
+        }
         modelAndView.addObject(DEFAULT_VIEW_ATTRIBUTE_NAME, originalViewName);
     }
 }

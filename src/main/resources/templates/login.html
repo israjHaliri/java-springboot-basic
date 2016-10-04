@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <div th:fragment="stylesheets">
+        <style>
+        </style>
+    </div>
 </head>
 <body>
 <div th:fragment="content">
@@ -26,4 +30,9 @@
     </form>
 </div>
 </body>
+<div th:fragment="scripts">
+    $( document ).ready(function() {
+    alert( "ready!" );
+    });
+</div>
 </html>

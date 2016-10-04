@@ -9,11 +9,11 @@
         for css
     </div>
 </head>
-<body>
+<body style="background: yellow;">
 <img src="/resources/laptop.jpg" alt="" />
-<div th:replace="header :: header_page">Disini header</div>
+<div th:replace="header-backend :: header_page">Disini header backend</div>
 <div th:replace="${view} :: content">Disini content</div>
-<div th:replace="footer :: footer_page">Disini header</div>
+<div th:replace="footer-backend :: footer_page">Disini header backend</div>
 </body>
 <div th:replace="${view} :: scripts">
     for javascript

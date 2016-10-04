@@ -22,7 +22,7 @@ import java.util.Date;
  */
 
 @Controller
-@RequestMapping("/peserta")
+@RequestMapping("/backend/peserta")
 public class PesertaHtmlController {
 
     @Autowired

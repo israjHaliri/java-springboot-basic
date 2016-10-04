@@ -23,6 +23,12 @@ public class KonfigurasiWeb extends WebMvcConfigurerAdapter{
     }
 
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("classpath:/templates");
+    }
+
     @Bean
     public JasperReportsViewResolver getJasperReportsViewResolver() {
         JasperReportsViewResolver resolver = new JasperReportsViewResolver();

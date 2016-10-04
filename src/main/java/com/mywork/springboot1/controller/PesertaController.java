@@ -15,6 +15,7 @@ import javax.validation.Valid;
  * Created by israj on 9/27/2016.
  */
 @RestController
+@RequestMapping("/api")
 public class PesertaController {
 
     @Autowired
